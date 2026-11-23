@@ -1,0 +1,501 @@
+/* =========================================================
+   Hola Vacaciones – style landing page (projekt edukacyjny)
+   Mobile-first: style bazowe dla telefonu, potem większe ekrany.
+   Czcionki systemowe – strona nie łączy się z zewnętrznymi
+   serwerami czcionek przed wyrażeniem zgody.
+   ========================================================= */
+
+:root {
+  --noche: #12304f;     /* tekst, nagłówki, tło hero */
+  --azulejo: #1e5aa8;   /* akcenty, linki, fokus na jasnym tle */
+  --limon: #f5c542;     /* przyciski CTA */
+  --limon-dark: #e0ad22;
+  --cal: #ffffff;       /* tło */
+  --cielo: #edf3fa;     /* tło sekcji naprzemiennych */
+  --ink-soft: #46566a;  /* tekst pomocniczy */
+  --error: #b3261e;
+  --success: #1e6b3a;
+  --success-bg: #e7f4ec;
+  --focus: var(--azulejo);
+
+  --font-ui: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-phrase: Georgia, "Times New Roman", serif;
+
+  --radius-small: 6px;
+  --radius-card: 14px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--noche);
+  background: var(--cal);
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  margin: 0 0 0.6em;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.wrap.narrow {
+  max-width: 42rem;
+}
+
+/* Sekcje docelowe kotwic nie chowają się pod krawędzią ekranu */
+section[id] {
+  scroll-margin-top: 1rem;
+}
+
+/* ---------- Pasek informacji o demonstracji ---------- */
+.demo-bar {
+  margin: 0;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  text-align: center;
+  background: var(--limon);
+  color: var(--noche);
+}
+
+/* ---------- Nagłówek ---------- */
+.site-header {
+  background: var(--noche);
+  color: var(--cal);
+  padding: 1rem 0 0;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Przyciski ---------- */
+.btn {
+  display: inline-block;
+  min-height: 48px;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius-small);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--limon);
+  color: var(--noche);
+}
+
+.btn-primary:hover {
+  background: var(--limon-dark);
+}
+
+.btn-primary:disabled {
+  background: #d7dde4;
+  color: #4c5866;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--cal);
+  border-color: var(--cal);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  --focus: var(--limon);
+  background: var(--noche);
+  color: var(--cal);
+  padding: 2.5rem 0 3.5rem;
+}
+
+.hero-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.hero-kicker {
+  font-size: 0.95rem;
+  color: #c9d6e6;
+  margin-bottom: 0.75rem;
+}
+
+.hero h1 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  max-width: 18ch;
+}
+
+.hero-lead {
+  font-size: 1.125rem;
+  max-width: 34rem;
+  color: #e4ecf5;
+}
+
+.hero-note {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  color: #c9d6e6;
+}
+
+/* Karta ze zwrotem – jedyny "ozdobny" element strony */
+.phrase-card {
+  margin: 0;
+  padding: 1.5rem 1.5rem 1.25rem;
+  background: var(--cal);
+  color: var(--noche);
+  border-radius: var(--radius-card);
+  border-left: 8px solid var(--limon);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  transform: rotate(-1.5deg);
+  max-width: 26rem;
+}
+
+.phrase-meta {
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+}
+
+.phrase-es {
+  font-family: var(--font-phrase);
+  font-style: italic;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+}
+
+.phrase-pl {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin-bottom: 1rem;
+}
+
+.phrase-card figcaption {
+  font-size: 0.875rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #dbe3ec;
+}
+
+/* ---------- Oferta ---------- */
+.offer {
+  padding: 3rem 0;
+}
+
+.offer-list {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0 0 2rem;
+}
+
+.offer-list div {
+  padding-left: 1rem;
+  border-left: 3px solid var(--azulejo);
+}
+
+.offer-list dt {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.offer-list dd {
+  margin: 0.15rem 0 0;
+  color: var(--ink-soft);
+}
+
+/* ---------- Program ---------- */
+.program {
+  background: var(--cielo);
+  padding: 3rem 0;
+}
+
+.program-list {
+  list-style: none;
+  counter-reset: spotkanie;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.program-list li {
+  counter-increment: spotkanie;
+  background: var(--cal);
+  border-radius: var(--radius-small);
+  padding: 1.1rem 1.25rem;
+}
+
+/* Numeracja ma sens: to kolejne spotkania kursu */
+.program-list li::before {
+  content: "Spotkanie " counter(spotkanie);
+  display: block;
+  font-size: 0.85rem;
+  color: var(--azulejo);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.program-list h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.4rem;
+}
+
+.program-list .es {
+  font-family: var(--font-phrase);
+  font-style: italic;
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.program-list .pl {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ---------- Obiekcja ---------- */
+.objection {
+  padding: 3rem 0;
+}
+
+.objection-points {
+  padding-left: 1.2rem;
+  margin: 0 0 2rem;
+}
+
+.objection-points li {
+  margin-bottom: 0.6rem;
+}
+
+/* ---------- FAQ ---------- */
+.faq {
+  background: var(--cielo);
+  padding: 3rem 0;
+}
+
+.faq details {
+  background: var(--cal);
+  border-radius: var(--radius-small);
+  margin-bottom: 0.75rem;
+}
+
+.faq summary {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 1rem 1.25rem;
+  min-height: 48px;
+}
+
+.faq details p {
+  padding: 0 1.25rem 1rem;
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+/* ---------- Formularz ---------- */
+.form-section {
+  padding: 3rem 0 4rem;
+}
+
+.form-intro {
+  color: var(--ink-soft);
+}
+
+.mono {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.95em;
+  color: var(--noche);
+}
+
+#lead-form {
+  margin-top: 1.5rem;
+  padding: 1.5rem 1.25rem;
+  border: 2px solid var(--noche);
+  border-radius: var(--radius-card);
+}
+
+.required-note {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.field {
+  margin-bottom: 1.25rem;
+}
+
+.field label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.field input,
+.field select {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  color: var(--noche);
+  background: var(--cal);
+  border: 2px solid #8a99ab;
+  border-radius: var(--radius-small);
+}
+
+.field input:focus-visible,
+.field select:focus-visible {
+  border-color: var(--azulejo);
+}
+
+/* Pole z błędem zachowuje czerwone obramowanie także wtedy, gdy ma fokus
+   (po nieudanym wysłaniu skrypt przenosi fokus na pierwsze błędne pole). */
+.field [aria-invalid="true"],
+.field [aria-invalid="true"]:focus-visible {
+  border-color: var(--error);
+}
+
+.error {
+  color: var(--error);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0.35rem 0 0;
+}
+
+.btn-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-small);
+  background: var(--success-bg);
+  color: var(--success);
+  font-weight: 700;
+  border-left: 6px solid var(--success);
+}
+
+/* ---------- Stopka ---------- */
+.site-footer {
+  --focus: var(--limon);
+  background: var(--noche);
+  color: #e4ecf5;
+  padding: 2.5rem 0 3rem;
+  font-size: 0.95rem;
+}
+
+.privacy-note {
+  margin-top: 0.75rem;
+  color: var(--limon);
+}
+
+.authors {
+  margin-top: 1.5rem;
+  color: #c9d6e6;
+}
+
+/* =========================================================
+   Większe ekrany
+   ========================================================= */
+@media (min-width: 640px) {
+  .offer-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .program-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .btn-submit {
+    width: auto;
+  }
+}
+
+@media (min-width: 960px) {
+  h2 {
+    font-size: 2.1rem;
+  }
+
+  .hero {
+    padding: 4rem 0 5rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .program-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .offer,
+  .program,
+  .objection,
+  .faq {
+    padding: 4.5rem 0;
+  }
+}
